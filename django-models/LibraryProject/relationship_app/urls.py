@@ -35,11 +35,11 @@ urlpatterns = [
     
     path('', views.home_redirect, name='home'),
     
-    path('books/add/', views.add_book, name='add-book'),
+    path('add_book/', views.add_book, name='add-book'),
     
-    path('books/<int:pk>/edit/', views.edit_book, name='edit-book'),
+    path('edit_book/<int:pk>/', views.edit_book, name='edit-book'),
     
-    path('books/<int:pk>/delete/', views.delete_book, name='delete-book'),
+    path('delete_book/<int:pk>/', views.delete_book, name='delete-book'),
     
     path('books/', views.list_books, name='list-books'),  # existing view
 
