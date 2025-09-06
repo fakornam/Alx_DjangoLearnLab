@@ -1,5 +1,5 @@
 # Create your views here.
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from .models import Book, Library 
 
@@ -7,7 +7,7 @@ from .models import Book, Library
 # Function-Based View: List Books
 
 def list_books(request):
-    books = Book.objects.select_related('author').all()
+    books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
 
 # Class-Based View: Library Detail
@@ -19,4 +19,4 @@ class LibraryDetailView(DetailView):
     
 # Optional redirect view for root URL
 def home_redirect(request):
-    return redirect('list_books')
+    return ('list_books')
