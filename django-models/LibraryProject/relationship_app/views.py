@@ -33,7 +33,7 @@ from django.contrib.auth.decorators import user_passes_test
 from .models import UserProfile
 
 def has_role(user, role):
-    return UserProfile.objects.filter(user=user.id, role=role).exists()
+    return UserProfile.objects.filter(user=user, role=role).exists()
 def is_admin(user):
     return has_role(user, "Admin")
 def is_librarian(user):
