@@ -34,5 +34,14 @@ urlpatterns = [
     path('booklist/',views.booklist, name = "booklist"),
     
     path('', views.home_redirect, name='home'),
+    
+    path('books/add/', views.add_book, name='add-book'),
+    
+    path('books/<int:pk>/edit/', views.edit_book, name='edit-book'),
+    
+    path('books/<int:pk>/delete/', views.delete_book, name='delete-book'),
+    
+    path('books/', views.list_books, name='list-books'),  # existing view
+
      
 ]  
