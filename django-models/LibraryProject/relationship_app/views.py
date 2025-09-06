@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
+from django.contrib.auth.forms import UserCreationForm
 from .models import Book
 from .models import Library
 
