@@ -29,7 +29,6 @@ class LibraryListView(DetailView):
 
 from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
 from django.contrib.auth.decorators import user_passes_test
-
 from .models import UserProfile
 
 def has_role(user, role):
@@ -43,12 +42,12 @@ def is_member(user):
 
 
 @user_passes_test(is_admin)
-def AdminOnlyView(request):
-    return HttpResponse("<h1>Welcome Admin!</h1>")
+def admin_view(request):
+    return render(request, 'relationship_app/admin_view.html')
 
 @user_passes_test(is_librarian)
-def LibrarianView(request):
-    return HttpResponse("<h1>Welcome Librarian!</h1>")
+def librarian_view(request):
+    return render(request, 'relationship_app/librarian_view.html')
 
 @user_passes_test(is_member)
 def member_view(request):
