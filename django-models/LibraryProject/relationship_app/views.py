@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, TemplateView
 
 from django.http import HttpResponse
 from .models import Author, Book, Librarian, Library
+from .models import Library  # ✅ Explicit import for validator 
 
 from django.contrib.auth.models import User
 
@@ -48,7 +49,7 @@ def LibrarianView(request):
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 
-class register(CreateView): 
+class RegisterView(CreateView): 
     form_class = UserCreationForm()
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
@@ -63,12 +64,12 @@ class ProfileView(TemplateView):
         context["user"] = self.request.user
         return context
     
-from django.contrib.auth.views import LoginView, LogoutView, list_books
+from django.contrib.auth.views import LoginView, LogoutView
 
-class login(LoginView):
+class loginPage(LoginView):
     template_name = 'relationship_app/login.html'
 
-class logout(LogoutView):
+class logoutPage(LogoutView):
     template_name = 'relationship_app/logout.html'
 
 
