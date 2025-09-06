@@ -1,7 +1,7 @@
 from typing import Any
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
-
+from django.views.generic import DetailView
 from django.http import HttpResponse
 from .models import Author, Book, Librarian, Library
 from .models import Library  # ✅ Explicit import for validator 
