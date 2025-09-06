@@ -65,6 +65,7 @@ class ProfileView(TemplateView):
         return context
     
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import login
 
 class loginPage(LoginView):
     template_name = 'relationship_app/login.html'
