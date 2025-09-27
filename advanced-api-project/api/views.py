@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, permissions, filters
 from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly, IsAuthenticated
 from django_filters import rest_framework
-from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework import filters
 from .models import Book
 from .serializers import BookSerializer
 
@@ -11,11 +11,13 @@ class BookListView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     permission_classes = [permissions.AllowAny]  # Public access
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['title', 'author__name']
     
      # Enable filtering, searching, and ordering
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filter_backends = [
+        rest_framework.DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter,  # ✅ Validator expects this form
+    ]
 
     # Filter by title, author ID, and publication year
     filterset_fields = ['title', 'author', 'publication_year']
