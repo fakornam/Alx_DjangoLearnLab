@@ -1,0 +1,17 @@
+{% extend 'base_generic.html' %}
+
+{% block content %}
+<h1>Blog Posts</h1>
+<ur>
+
+    {% for post in post %}
+
+    <li>
+        <a href="{% url 'post_detial' post.pk %}">{{ post.title}}</a>
+        <p>{{ post.content|truncatewords:30}}</p>
+
+    </li>
+    {% endfor %}
+</ur>
+<a href="{% url 'post_create' %}"> Create a new post</a>
+{% endblock %}
